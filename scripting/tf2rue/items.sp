@@ -146,6 +146,14 @@ char wlvalue[32];
 
 void tft_wl_changed(ConVar convar, const char[] oldValue, const char[] newValue)
 {
+    if (tft_whitelist_id.IntValue < 0)
+    {
+        LogMessage("Whitelist id %i < 0, unsetting whitelist!", tft_whitelist_id.IntValue);
+        mptw.SetString("");
+        return;
+        // calls ReloadWhitelist() if needed
+    }
+
     strcopy(wlvalue, sizeof(wlvalue), newValue);
 
     if (!StrEqual(oldValue, newValue))
@@ -292,12 +300,6 @@ public void SteamWorks_OnDownloadWhitelist(Handle hRequest, bool bFailure, bool 
 
 void SetWhitelist()
 {
-    if (tft_whitelist_id.IntValue == -1)
-    {
-        mptw.SetString("");
-        return;
-        // calls ReloadWhitelist() if needed 
-    }
     mptw.SetString(wlcfg);
     LogImportant("Setting whitelist %s...", wlcfg);
 }
