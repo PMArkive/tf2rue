@@ -292,6 +292,12 @@ public void SteamWorks_OnDownloadWhitelist(Handle hRequest, bool bFailure, bool 
 
 void SetWhitelist()
 {
+    if (tft_whitelist_id.IntValue == -1)
+    {
+        mptw.SetString("");
+        return;
+        // calls ReloadWhitelist() if needed 
+    }
     mptw.SetString(wlcfg);
     LogImportant("Setting whitelist %s...", wlcfg);
 }
