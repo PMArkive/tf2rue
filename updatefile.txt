@@ -7,7 +7,7 @@
             "Latest"    "0.0.12"
         }
 
-        "Notes"     "Corrected updatefile.txt
+        "Notes"     "Corrected updatefile.txt"
         "Notes"     "-sappho"
     }
 
